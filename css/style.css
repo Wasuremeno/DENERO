@@ -1,4 +1,206 @@
+
 :root {
+    --slate-blue: #545CD1;      
+    --pale-yellow: #EAF094;     
+    --light-periwinkle: #9499D0; 
+    --soft-pink: #e696c6; 
+    --circle-size: 30px;
+    --animation-duration: 6s;
+    --delay-between: 1s;      
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+.circle-container {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    width: 300px;
+    height: 100px;
+    margin-left: -150px;
+}
+
+.circle {
+    position: absolute;
+    top: 50%;
+    width: var(--circle-size);
+    height: var(--circle-size);
+    background-color: var(--slate-blue);
+    border-radius: 50%;
+}
+
+.circle:nth-child(1) {
+    left: 30%;
+    margin-left: calc(var(--circle-size) / -2);
+    margin-top: calc(var(--circle-size) / -2);
+    animation: scaleUp1 var(--animation-duration) ease-in-out infinite;
+}
+
+.circle:nth-child(2) {
+    left: 50%;
+    margin-left: calc(var(--circle-size) / -2);
+    margin-top: calc(var(--circle-size) / -2);
+    animation: scaleUp2 var(--animation-duration) ease-in-out infinite;
+    animation-delay: calc(1 * var(--delay-between));
+}
+
+.circle:nth-child(3) {
+    left: 70%;
+    margin-left: calc(var(--circle-size) / -2);
+    margin-top: calc(var(--circle-size) / -2);
+    animation: scaleUp3 var(--animation-duration) ease-in-out infinite;
+    animation-delay: calc(2 * var(--delay-between));
+}
+
+
+
+
+@keyframes scaleUp1 {
+    0%, 33.33% {
+        transform: scale(1);
+    }
+    16.66% {
+        transform: scale(1.5);
+    }
+    33.34%, 100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleUp2 {
+    0%, 33.33% {
+        transform: scale(1);
+    }
+    16.66% {
+        transform: scale(1);
+    }
+    33.34%, 66.66% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    66.67%, 100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleUp3 {
+    0%, 66.66% {
+        transform: scale(1);
+    }
+    66.67%, 83.33% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.5);
+    }
+    83.34%, 100% {
+        transform: scale(1);
+    }
+}
+
+.row {
+    position: absolute;
+    top: 300px;
+    left: 0;
+    height: 50px;
+    width: 100%;
+}
+
+.popup {
+    width: calc((100% - 80px) / 3);
+    height: 50px;
+    background-color: var(--pale-yellow);
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: top 0.3s ease, box-shadow 0.3s ease;
+}
+
+.popup:nth-child(1) {
+    left: 20px;
+}
+
+.popup:nth-child(2) {
+    left: calc(20px + ((100% - 80px) / 3) + 20px);
+}
+
+.popup:nth-child(3) {
+    left: calc(20px + (((100% - 80px) / 3) * 2) + 40px);
+}
+
+.popup:hover {
+    top: -25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup:active {
+    background-color: var(--light-periwinkle);
+}
+
+.popup::before {
+    content: "popup text";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--soft-pink);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    margin-bottom: 8px;
+}
+
+.popup::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--soft-pink);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.popup:hover::before,
+.popup:hover::after {
+    opacity: 1;
+    transition-delay: 2s;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* :root {
 --slate-blue: #545CD1;      
 --pale-yellow: #EAF094;     
 --light-periwinkle: #9499D0; 
@@ -71,4 +273,4 @@
             50% {
                 transform: translate(-50%, -50%) scale(1.25);
             }
-        }
+        } */
